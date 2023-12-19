@@ -41,3 +41,5 @@ async fn main() -> std::io::Result<()> {
     .run()
     .await
 }
+
+// Configuring Log Level when running the executable, e.g. `RUST_LOG=debug cargo run`
