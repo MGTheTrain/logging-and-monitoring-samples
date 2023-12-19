@@ -27,7 +27,8 @@ Build and run the docker-compose network:
 docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build # or `docker compose up -d --build`
 ```
 
-Checkout the Grafana dashboard `localhost:9090` on Unix systems. You can add new dashboards.
+Access the Prometheus UI by navigating to `localhost:9090` using a web browser. Here, you can explore discovered services with a metrics endpoint.
+Access the Grafana UI by visiting `localhost:3000` through a web browser. In this interface, you can create new dashboards.
 
 #### On Windows systems with Virtual Box enabled Docker
 
@@ -43,6 +44,9 @@ docker restart restart <prometheus container id>
 ```
 
 After restarting Prometheus should be able to discover the metrics endpoints. 
+
+Access the Prometheus UI by navigating to `localhost:9090` using a web browser. Here, you can explore discovered services with a metrics endpoint.
+Access the Grafana UI by visiting `localhost:3000` through a web browser. In this interface, you can create new dashboards.
 
 #### Results
 
