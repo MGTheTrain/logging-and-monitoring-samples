@@ -22,6 +22,8 @@ async fn hello() -> Result<impl Responder> {
 
 #[actix_web::main] // or #[tokio::main]
 async fn main() -> std::io::Result<()> {
+    env_logger::init();
+    
     let mut labels = HashMap::new();
     labels.insert("label1".to_string(), "value1".to_string());
     let prometheus = PrometheusMetricsBuilder::new("api")
