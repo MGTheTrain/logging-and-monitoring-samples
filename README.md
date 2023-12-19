@@ -31,7 +31,7 @@ Checkout the Grafana dashboard `localhost:9090` on Unix systems. You can add new
 
 #### On Windows systems with Virtual Box enabled Docker
 
-Mounting is an issues therefore checkout comments in the [docker-compose.yml](./docker-compose.yml). Therefore comment out lines in regards to volumes.
+Mounting is an issues therefore checkout comments in the [docker-compose.prometheus-grafana-stack.yml](./docker-compose.prometheus-grafana-stack.yml). Therefore comment out lines in regards to volumes.
 
 ```sh
 docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build 
