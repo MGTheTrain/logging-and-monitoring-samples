@@ -24,7 +24,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 Build and run the docker-compose network:
 
 ```sh
-docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build # On docker versions `docker compose up -d --build`
+docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build # or `docker compose up -d --build`
 ```
 
 Checkout the Grafana dashboard `localhost:9090` on Unix systems. You can add new dashboards.
