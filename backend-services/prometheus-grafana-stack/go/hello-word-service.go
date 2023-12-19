@@ -20,8 +20,8 @@ func main() {
 	// Metrics endpoint for Prometheus
 	router.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
-	// Start the server on port 2112
-	if err := router.Run(":2112"); err != nil {
+	// Start the server on port 80
+	if err := router.Run(":80"); err != nil {
 		panic(err)
 	}
 }
