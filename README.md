@@ -35,8 +35,8 @@ Mounting is an issues therefore checkout comments in the [docker-compose.yml](./
 ```sh
 docker-compose up -d --build 
 docker ps # Resolve container id of prometheus container
-docker exec -it <prometheus container id> bash
-# Manually update the scrape_config according to the [prometheus.yml](./prometheus/prometheus.yml) with `vi` cli tool
+docker exec -it <prometheus container id> sh
+# Manually update the scrape_config according to the [prometheus.yml](./prometheus/prometheus.yml) with `vi` cli tool in /etc/prometheus/prometheus.yml
 # Exit out of the container terminal. 
 docker restart restart <prometheus container id>
 ```
