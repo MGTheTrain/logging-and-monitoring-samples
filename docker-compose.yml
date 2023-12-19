@@ -5,7 +5,7 @@ services:
     container_name: csharp-hello-world-service
     build:
       context: .
-      dockerfile: backend-services/prometheus-grafana-stack/c#/HelloWorldService
+      dockerfile: backend-services/prometheus-grafana-stack/c#/HelloWorldService/Dockerfile
     depends_on:
       - "prometheus"
       - "grafana"
