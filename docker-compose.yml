@@ -23,17 +23,16 @@ services:
     ports:
       - "3000:3000"
     volumes:
-        - ./grafana/provisioning/datasources/prometheus_ds.yml:/etc/grafana/provisioning/datasources/prometheus_ds.yml
-        - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/datasources/prometheus_ds.yml:/etc/grafana/provisioning/datasources/prometheus_ds.yml
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
     depends_on:
-        prometheus:
-            condition: service_healthy
+      - "prometheus"
     healthcheck:
-        test: wget -q --tries=1 -O- http://localhost:3000/
-        interval: 3s
-        timeout: 3s
-        retries: 10
-        start_period: 10s
+      test: wget -q --tries=1 -O- http://localhost:3000/
+      interval: 3s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   prometheus:
     image: prom/prometheus
@@ -41,10 +40,10 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro 
     healthcheck:
-        test: wget -q --tries=1 -O- http://localhost:9090/
-        interval: 3s
-        timeout: 3s
-        retries: 10
-        start_period: 10s
+      test: wget -q --tries=1 -O- http://localhost:9090/
+      interval: 3s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
