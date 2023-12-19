@@ -52,7 +52,7 @@ After restarting Prometheus should be able to discover the metrics endpoints.
 
 ##### Go Gin metrics endpoints
 
-![ASP .NET Core metrics endpoints](./images/csharp-metrics-endpoint.PNG)
+![ASP .NET Core metrics endpoints](./images/go-metrics-endpoint.PNG)
 
 ##### Python FastAPI metrics endpoints
 
