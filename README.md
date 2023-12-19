@@ -16,7 +16,7 @@ TBD
 
 ## How to use
 
-### Prometheus
+### Prometheus/Grafana stack
 
 #### On Unix systems (Linux Ubuntu, Linux debian or MacOS versions)
 
@@ -56,3 +56,7 @@ After restarting Prometheus should be able to discover the metrics endpoints.
 ##### Grafana sample dashboard
 
 ![Grafana sample dashboard](./images/grafana-sample-dashboard.PNG)
+
+### Thanos
+
+TBD
