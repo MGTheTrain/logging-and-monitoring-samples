@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 5s # By default, scrape targets every 5 seconds.
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  # external_labels:
+  #   monitor: 'nats-openrmf-server'
+
+# A scrape configuration containing exactly one endpoint to scrape:
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'csharp-hello-world-service'
+    scheme: http
+    metrics_path: /metrics
+    static_configs:
+    - targets: ['csharp-hello-world-service:9102']
+  # - job_name: 'some-other-service'
+  #   scheme: http
+  #   metrics_path: /metrics
+  #   static_configs:
+  #   - targets: ['some-other-service:9102']
