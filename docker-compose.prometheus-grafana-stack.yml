@@ -26,6 +26,18 @@ services:
       - "5002:80/tcp"
     restart: on-failure
 
+  python-hello-world-service:
+    container_name: python-hello-world-service
+    build:
+      context: .
+      dockerfile: backend-services/prometheus-grafana-stack/python/Dockerfile
+    depends_on:
+      - "prometheus"
+      - "grafana"
+    ports:
+      - "5003:80/tcp"
+    restart: on-failure
+
   # monitoring services
   grafana:
     container_name: grafana

@@ -23,7 +23,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 Build and run the docker-compose network:
 
 ```sh
-docker-compose up -d --build # On docker versions `docker compose up -d --build`
+docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build # On docker versions `docker compose up -d --build`
 ```
 
 Checkout the Grafana dashboard `localhost:9090` on Unix systems. You can add new dashboards.
@@ -33,7 +33,7 @@ Checkout the Grafana dashboard `localhost:9090` on Unix systems. You can add new
 Mounting is an issues therefore checkout comments in the [docker-compose.yml](./docker-compose.yml). Therefore comment out lines in regards to volumes.
 
 ```sh
-docker-compose up -d --build 
+docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build 
 docker ps # Resolve container id of prometheus container
 docker exec -it <prometheus container id> sh
 # Manually update the scrape_config according to the [prometheus.yml](./prometheus/prometheus.yml) with `vi` cli tool in /etc/prometheus/prometheus.yml

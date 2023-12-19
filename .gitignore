@@ -1,3 +1,4 @@
 bin/
 obj/
 go.sum
+__pycache__
