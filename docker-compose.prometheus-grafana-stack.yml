@@ -18,7 +18,7 @@ services:
     container_name: go-hello-world-service
     build:
       context: .
-      dockerfile: backend-services/prometheus-grafana-stack/go/Dockerfile
+      dockerfile: backend-services/prometheus-grafana-stack/go/hello-world-service/Dockerfile
     depends_on:
       - "prometheus"
       - "grafana"
@@ -30,7 +30,7 @@ services:
     container_name: python-hello-world-service
     build:
       context: .
-      dockerfile: backend-services/prometheus-grafana-stack/python/Dockerfile
+      dockerfile: backend-services/prometheus-grafana-stack/python/hello-world-service/Dockerfile
     depends_on:
       - "prometheus"
       - "grafana"
@@ -44,9 +44,9 @@ services:
     image: grafana/grafana:master
     ports:
       - "3000:3000"
-    volumes: # Within Docker enabled in VirtualBox, deactivate or comment out the lines related to volume mounting. Specifically, this line and the subsequent two lines
-      - ./grafana/provisioning/datasources/prometheus_ds.yml:/etc/grafana/provisioning/datasources/prometheus_ds.yml
-      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+    # volumes: # Within Docker enabled in VirtualBox, deactivate or comment out the lines related to volume mounting. Specifically, this line and the subsequent two lines
+    #   - ./grafana/provisioning/datasources/prometheus_ds.yml:/etc/grafana/provisioning/datasources/prometheus_ds.yml
+    #   - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
     depends_on:
       - "prometheus"
     healthcheck:
@@ -61,8 +61,8 @@ services:
     container_name: prometheus-server
     ports:
       - 9090:9090
-    volumes: # Within Docker enabled in VirtualBox, deactivate or comment out the lines related to volume mounting. Specifically, this line and the subsequent line
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro 
+    # volumes: # Within Docker enabled in VirtualBox, deactivate or comment out the lines related to volume mounting. Specifically, this line and the subsequent line
+    #   - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro 
     healthcheck:
       test: wget -q --tries=1 -O- http://localhost:9090/
       interval: 3s
