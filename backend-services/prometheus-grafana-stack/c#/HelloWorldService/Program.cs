@@ -11,7 +11,8 @@ var app = builder.Build();
 
 app.UseRouting();
 
-app.UseMetricServer(9102);
+// app.UseMetricServer(9102); // Challenges were faced in the Windows OS test system. It's advisable to allocate a distinct port for Prometheus to gather metrics. This should work on Unix systems (Linux debian or Linux Ubuntu and Mac OS versions)
+app.UseMetricServer();
 app.UseHttpMetrics();
 
 app.UseAuthorization();
