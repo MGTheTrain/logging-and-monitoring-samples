@@ -12,7 +12,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 
 ## References
 
-TBD
+- [Instrumenting a go application for prometheus](https://prometheus.io/docs/guides/go-application/)
 
 ## How to use
 

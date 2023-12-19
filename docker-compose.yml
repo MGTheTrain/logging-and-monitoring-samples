@@ -9,11 +9,21 @@ services:
     depends_on:
       - "prometheus"
       - "grafana"
-    env_file:
-      - csharp-hello-world-service.env
     ports:
-      - "5000:80/tcp"
+      - "5001:80/tcp"
       - "9102:9102/tcp"
+    restart: on-failure
+  
+  go-hello-world-service:
+    container_name: go-hello-world-service
+    build:
+      context: .
+      dockerfile: backend-services/prometheus-grafana-stack/go/Dockerfile
+    depends_on:
+      - "prometheus"
+      - "grafana"
+    ports:
+      - "5002:80/tcp"
     restart: on-failure
 
   # monitoring services

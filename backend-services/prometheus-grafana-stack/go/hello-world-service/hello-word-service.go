@@ -11,7 +11,7 @@ func main() {
 	router := gin.Default()
 
 	// Hello World endpoint
-	router.GET("/hello", func(c *gin.Context) {
+	router.GET("/api/v1/hws", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "Hello, World!",
 		})
