@@ -45,9 +45,13 @@ After restarting Prometheus should be able to discover the metrics endpoints.
 
 #### Results
 
-##### ASP .NET Core HelloWorld service metrics endpoints
+##### ASP .NET Core metrics endpoints
 
-![ASP .NET Core HelloWorld service metrics endpoints](./images/csharp-metrics-endpoint.PNG)
+![ASP .NET Core metrics endpoints](./images/csharp-metrics-endpoint.PNG)
+
+##### Go Gin metrics endpoints
+
+![ASP .NET Core metrics endpoints](./images/csharp-metrics-endpoint.PNG)
 
 ##### Prometheus metric for total requests received
 
