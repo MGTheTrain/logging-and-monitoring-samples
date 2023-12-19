@@ -20,3 +20,8 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
     - targets: ['go-hello-world-service:80']
+  - job_name: 'python-hello-world-service'
+    scheme: http
+    metrics_path: /metrics
+    static_configs:
+    - targets: ['python-hello-world-service:80']
