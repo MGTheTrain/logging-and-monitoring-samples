@@ -1,3 +1,4 @@
+use log::info;
 use std::collections::HashMap;
 use actix_web::{get, web, App, HttpServer, HttpResponse, Responder, Result};
 use serde::Serialize;
@@ -17,6 +18,7 @@ async fn hello() -> Result<impl Responder> {
     let obj = HelloWorldResponse {
         message: String::from("Hello from Rust"),
     };
+    info!("Hi");
     Ok(web::Json(obj))
 }
 
