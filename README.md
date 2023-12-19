@@ -53,6 +53,10 @@ After restarting Prometheus should be able to discover the metrics endpoints.
 
 ![ASP .NET Core metrics endpoints](./images/csharp-metrics-endpoint.PNG)
 
+##### Python FastAPI metrics endpoints
+
+![Python FastAPI metrics endpoints](./images/python-metrics-endpoint.PNG)
+
 ##### Prometheus metric for total requests received
 
 ![Prometheus metric for total requests received](./images/prometheus-metric-http_requests_received_total.PNG)
