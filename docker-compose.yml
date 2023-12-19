@@ -1,6 +1,20 @@
 version: '3.4'
 
 services:
+  csharp-hello-world-service:
+    container_name: csharp-hello-world-service
+    build:
+      context: .
+      dockerfile: backend-services/prometheus-grafana-stack/c#/HelloWorldService
+    depends_on:
+      - "prometheus"
+      - "grafana"
+    env_file:
+      - csharp-hello-world-service.env
+    ports:
+      - "5000:80/tcp"
+      - "9102:9102/tcp"
+    restart: on-failure
 
   # monitoring services
   grafana:
