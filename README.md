@@ -71,6 +71,6 @@ Access the Grafana UI by visiting `localhost:3000` through a web browser. In thi
 
 ![Grafana sample dashboard](./images/grafana-sample-dashboard.PNG)
 
-### Thanos
+### Loki
 
 TBD
