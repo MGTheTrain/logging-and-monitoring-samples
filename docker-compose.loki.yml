@@ -15,6 +15,18 @@ services:
       LOKI_URL: http://loki/loki/api/v1/push
     restart: on-failure
 
+  rust-hello-world-service:
+    container_name: rust-hello-world-service
+    build:
+      context: .
+      dockerfile: backend-services/loki-grafana-stack/rust/hello-world-service/Dockerfile
+    depends_on:
+      - "loki"
+      - "grafana"
+    ports:
+      - "5004:80/tcp"
+    restart: on-failure
+
   loki:
     image: grafana/loki:2.9.0
     ports:
