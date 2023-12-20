@@ -4,9 +4,10 @@ import datetime
 import pytz
 import argparse
 
-def push_log(host, loki_url):
+def push_log(loki_url):
     curr_datetime = datetime.datetime.now(pytz.timezone('Asia/Yekaterinburg'))
     curr_datetime = curr_datetime.isoformat('T')
+    host = 'test-host'
     msg = f'On server {host} detected error'
 
     url = f'http://{loki_url}/api/prom/push'
@@ -33,11 +34,10 @@ def push_log(host, loki_url):
 
 def main():
     parser = argparse.ArgumentParser(description='Push logs to Loki')
-    parser.add_argument('--host', help='Specify the host name', required=True)
     parser.add_argument('--loki-url', help='Specify the Loki URL (e.g., 192.168.99.100:3100)', required=True)
     args = parser.parse_args()
 
-    push_log(args.host, args.loki_url)
+    push_log(args.loki_url)
 
 if __name__ == '__main__':
     main()

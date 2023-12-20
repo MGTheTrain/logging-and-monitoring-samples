@@ -139,10 +139,10 @@ You can also refer to the [sample_loki_script.py](backend-services\loki-grafana-
 
 ```sh
 # On Windows OS with Virtual Box enabled Docker
-python.exe .\sample_loki_script.py --host test-host --loki-url 192.168.99.100:3100
+python.exe .\sample_loki_script.py --loki-url 192.168.99.100:3100
 
 # On Unix systems
-python.exe .\sample_loki_script.py --host test-host --loki-url localhost:3100
+python.exe .\sample_loki_script.py --loki-url localhost:3100
 
 # You can expect to receive a status code of 204. Access the Grafana service running within the Docker Compose cluster by navigating to 192.168.99.100:3000 using a web browser. From there, you'll be able to create a dashboard, utilizing the Loki datasource.
 ```
