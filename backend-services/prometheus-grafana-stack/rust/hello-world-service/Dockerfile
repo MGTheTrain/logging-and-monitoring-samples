@@ -13,15 +13,14 @@ RUN echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN cargo build --release
 
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 WORKDIR /app/
-RUN apt-get update && \
-    apt-get install -y extra-runtime-dependencies && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update
 COPY --from=builder /app/target/release/hello-world-service .  
 EXPOSE 80
 RUN chmod +x hello-world-service
-ENTRYPOINT ["RUST_LOG=debug", "./hello-world-service"]
+ENV RUST_LOG=debug
+CMD ["./hello-world-service"]
 
 # building the docker image on Unix systems from `cd ../../../../`: sudo docker build -t rust-hello-world-service:0.1.0 -f ./backend-services/prometheus-grafana-stack/rust/hello-world-service/Dockerfile .
 # run the docker container on Unix systems: sudo docker run --rm -p 5004:80 -d rust-hello-world-service:0.1.0 
