@@ -15,6 +15,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 - [Instrumenting a go application for prometheus](https://prometheus.io/docs/guides/go-application/)
 - [Prometheus FastAPI Instrumentator](https://pypi.org/project/prometheus-fastapi-instrumentator/)
 - [Github repository for actix-web-prom](https://github.com/nlopes/actix-web-prom)
+- [Github repository for loki](https://github.com/grafana/loki)
 
 ## How to use
 
