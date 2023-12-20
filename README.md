@@ -119,7 +119,7 @@ docker-compose -f docker-compose.loki.yml up -d --build # or `docker compose up 
 
 #### Testing Loki endpoints
 
-To check Loki endpoints, proceed with the following execution:
+To check Loki endpoints, run following curl commands:
 
 ```sh
 # On Windows OS with Virtual Box enabled Docker
@@ -132,7 +132,19 @@ curl.exe -X GET http://192.168.99.100:3100/loki/api/v1/label/foo/values
 curl -X GET http://localhost:3100/ready
 curl -X GET http://localhost:3100/loki/api/v1/labels
 curl -v -H "Content-Type: application/json" -XPOST -s "http://localhost:3100/loki/api/v1/push" --data-raw '{"streams": [{ "stream": { "foo": "bar2" }, "values": [ [ "1570818238000000000", "fizzbuzz" ] ] }]}'
-curl.exe -X GET http://localhost:3100/loki/api/v1/label/foo/values
+curl -X GET http://localhost:3100/loki/api/v1/label/foo/values
+```
+
+You can also refer to the [sample_loki_script.py](backend-services\loki-grafana-stack\sample-scripts\sample_loki_script.py) which can be executed once a Loki docker instance is runnning. E.g.
+
+```sh
+# On Windows OS with Virtual Box enabled Docker
+python.exe .\sample_loki_script.py --host test-host --loki-url 192.168.99.100:3100
+
+# On Unix systems
+python.exe .\sample_loki_script.py --host test-host --loki-url localhost:3100
+
+# You can expect to receive a status code of 204. Access the Grafana service running within the Docker Compose cluster by navigating to 192.168.99.100:3000 using a web browser. From there, you'll be able to create a dashboard, utilizing the Loki datasource.
 ```
 
 
