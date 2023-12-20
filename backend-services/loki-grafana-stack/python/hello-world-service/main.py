@@ -16,7 +16,7 @@ logger.addHandler(handler)
 @app.get('/api/v1/hws', status_code=200)
 async def hello():
     logger.info(
-        "Something happened", 
+        { "message": "Hello, World from Python" }, 
         extra={"tags": {"service": "hello-world-service"}},
     )
     return { "message": "Hello, World from Python" } 
