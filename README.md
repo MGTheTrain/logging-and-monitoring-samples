@@ -12,11 +12,17 @@ Example repository showcasing the utilization of logging and monitoring solution
 
 ## References
 
+### Prometheus/Grafana stack
+
 - [Instrumenting a go application for prometheus](https://prometheus.io/docs/guides/go-application/)
 - [Prometheus FastAPI Instrumentator](https://pypi.org/project/prometheus-fastapi-instrumentator/)
 - [Github repository for actix-web-prom](https://github.com/nlopes/actix-web-prom)
 - [Github repository for loki](https://github.com/grafana/loki)
 - [Official rust docker images with build and serve stages](https://hub.docker.com/_/rust/)
+
+### Loki/Grafana stack
+
+- [Install Loki with Docker or Docker Compose](https://grafana.com/docs/loki/latest/setup/install/docker/)
 
 ## How to use
 
@@ -86,9 +92,13 @@ Access the Grafana UI by visiting `localhost:3000` through a web browser. In thi
 
 ![Grafana sample dashboard](./images/grafana-sample-dashboard.PNG)
 
-### Loki
+### Loki/Grafana stack
 
-TBD
+Build and run the docker-compose network:
+
+```sh
+docker-compose -f docker-compose.loki.yml up -d --build # or `docker compose up -d --build`
+```
 
 ### Cleanup
 
