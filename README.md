@@ -10,16 +10,17 @@
   - [Prometheus/Grafana stack](#prometheusgrafana-stack)
     - [Building and running docker-compose network on Unix systems (Linux Ubuntu, Linux Debian, or MacOS versions)](#building-and-running-docker-compose-network-on-unix-systems-linux-ubuntu-linux-debian-or-macos-versions)
     - [Building and running docker-compose network on Windows systems with Virtual Box enabled Docker](#building-and-running-docker-compose-network-on-windows-systems-with-virtual-box-enabled-docker)
-    - [Results](#results)
-      - [ASP .NET Core metrics endpoints for Prometheus scraping](#asp-net-core-metrics-endpoints-for-prometheus-scraping)
-      - [Go Gin metrics endpoints for Prometheus scraping](#go-gin-metrics-endpoints-for-prometheus-scraping)
-      - [Python FastAPI metrics endpoints for Prometheus scraping](#python-fastapi-metrics-endpoints-for-prometheus-scraping)
-      - [Rust Actix Web metrics endpoints for Prometheus scraping](#rust-actix-web-metrics-endpoints-for-prometheus-scraping)
-      - [Prometheus metric for total requests received](#prometheus-metric-for-total-requests-received)
-      - [Grafana sample dashboard](#grafana-sample-dashboard)
   - [Loki/Grafana stack](#lokigrafana-stack)
     - [Building and running docker-compose network](#building-and-running-docker-compose-network)
     - [Testing Loki endpoints](#testing-loki-endpoints)
+  - [Results](#results)
+    - [ASP .NET Core metrics endpoints for Prometheus scraping](#asp-net-core-metrics-endpoints-for-prometheus-scraping)
+    - [Go Gin metrics endpoints for Prometheus scraping](#go-gin-metrics-endpoints-for-prometheus-scraping)
+    - [Python FastAPI metrics endpoints for Prometheus scraping](#python-fastapi-metrics-endpoints-for-prometheus-scraping)
+    - [Rust Actix Web metrics endpoints for Prometheus scraping](#rust-actix-web-metrics-endpoints-for-prometheus-scraping)
+    - [Prometheus metric for total requests received](#prometheus-metric-for-total-requests-received)
+    - [Grafana sample dashboard considering Prometheus](#grafana-sample-dashboard-considering-prometheus)
+    - [Grafana sample dashboard considering Loki](#grafana-sample-dashboard-considering-loki)
   - [Cleanup](#cleanup)
 
 
@@ -81,32 +82,6 @@ After restarting Prometheus should be able to discover the metrics endpoints.
 Access the Prometheus UI by navigating to `localhost:9090` using a web browser. Here, you can explore discovered services with a metrics endpoint.
 Access the Grafana UI by visiting `localhost:3000` through a web browser. In this interface, you can create new dashboards.
 
-#### Results
-
-##### ASP .NET Core metrics endpoints for Prometheus scraping
-
-![ASP .NET Core metrics endpoints for Prometheus scraping](./images/csharp-metrics-endpoint.PNG)
-
-##### Go Gin metrics endpoints for Prometheus scraping
-
-![ASP .NET Core metrics endpoints for Prometheus scraping](./images/go-metrics-endpoint.PNG)
-
-##### Python FastAPI metrics endpoints for Prometheus scraping
-
-![Python FastAPI metrics endpoints for Prometheus scraping](./images/python-metrics-endpoint.PNG)
-
-##### Rust Actix Web metrics endpoints for Prometheus scraping
-
-![Rust Actix Web metrics endpoints for Prometheus scraping](./images/rust-metrics-endpoint.PNG)
-
-##### Prometheus metric for total requests received
-
-![Prometheus metric for total requests received](./images/prometheus-metric-http_requests_received_total.PNG)
-
-##### Grafana sample dashboard
-
-![Grafana sample dashboard](./images/grafana-sample-dashboard.PNG)
-
 ### Loki/Grafana stack
 
 #### Building and running docker-compose network
@@ -148,6 +123,36 @@ python.exe .\sample_loki_script.py --loki-url localhost:3100
 
 # You can expect to receive a status code of 204. Access the Grafana service running within the Docker Compose cluster by navigating to 192.168.99.100:3000 using a web browser. From there, you'll be able to create a dashboard, utilizing the Loki datasource.
 ```
+
+### Results
+
+#### ASP .NET Core metrics endpoints for Prometheus scraping
+
+![ASP .NET Core metrics endpoints for Prometheus scraping](./images/csharp-metrics-endpoint.PNG)
+
+#### Go Gin metrics endpoints for Prometheus scraping
+
+![ASP .NET Core metrics endpoints for Prometheus scraping](./images/go-metrics-endpoint.PNG)
+
+#### Python FastAPI metrics endpoints for Prometheus scraping
+
+![Python FastAPI metrics endpoints for Prometheus scraping](./images/python-metrics-endpoint.PNG)
+
+#### Rust Actix Web metrics endpoints for Prometheus scraping
+
+![Rust Actix Web metrics endpoints for Prometheus scraping](./images/rust-metrics-endpoint.PNG)
+
+#### Prometheus metric for total requests received
+
+![Prometheus metric for total requests received](./images/prometheus-metric-http_requests_received_total.PNG)
+
+#### Grafana sample dashboard considering Prometheus
+
+![Grafana sample dashboard](./images/grafana-sample-dashboard-considering-prometheus-datasource)
+
+#### Grafana sample dashboard considering Loki
+
+![Grafana sample dashboard considering Loki](./images/grafana-sample-dashboard-considering-loki-datasource)
 
 
 ### Cleanup
