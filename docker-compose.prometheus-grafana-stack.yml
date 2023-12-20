@@ -38,6 +38,18 @@ services:
       - "5003:80/tcp"
     restart: on-failure
 
+  rust-hello-world-service:
+    container_name: rust-hello-world-service
+    build:
+      context: .
+      dockerfile: backend-services/prometheus-grafana-stack/rust/hello-world-service/Dockerfile
+    depends_on:
+      - "prometheus"
+      - "grafana"
+    ports:
+      - "5003:80/tcp"
+    restart: on-failure
+
   # monitoring services
   grafana:
     container_name: grafana

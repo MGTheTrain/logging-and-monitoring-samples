@@ -24,4 +24,4 @@ RUN chmod +x hello-world-service
 ENTRYPOINT ["RUST_LOG=debug", "./hello-world-service"]
 
 # building the docker image on Unix systems from `cd ../../../../`: sudo docker build -t rust-hello-world-service:0.1.0 -f ./backend-services/prometheus-grafana-stack/rust/hello-world-service/Dockerfile .
-# run a docker container on Unix systems: sudo docker run --rm -p 5004:80 -d rust-hello-world-service:0.1.0 
+# run the docker container on Unix systems: sudo docker run --rm -p 5004:80 -d rust-hello-world-service:0.1.0 
