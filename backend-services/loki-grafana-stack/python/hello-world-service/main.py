@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import logging
 from log_handler import configure_logger
 import json
+from datetime import datetime
 
 app = FastAPI()
 
@@ -22,8 +23,11 @@ configure_logger(logger, loki_url)
 
 @app.get('/api/v1/hws', status_code=200)
 async def hello():
+    current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_message = f"[{current_datetime}] Hello, World from Python"
+    
     logger.info(
-        "Hello, World from Python", 
+        log_message, 
         extra={"tags": {"service": "hello-world-service"}},
     )
     return { "message": "Hello, World from Python" } 
