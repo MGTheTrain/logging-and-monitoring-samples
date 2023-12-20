@@ -28,6 +28,10 @@ Build and run the docker-compose network:
 
 ```sh
 docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build # or `docker compose up -d --build`
+# Because the build times for individual services (especially for Rust) are relatively lengthy, you may also opt to build and execute specific services.
+docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build <service 1> <service 2> <service N>
+# e.g. 
+docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build python-hello-world-service grafana prometheus
 ```
 
 Access the Prometheus UI by navigating to `localhost:9090` using a web browser. Here, you can explore discovered services with a metrics endpoint.
@@ -39,6 +43,11 @@ Mounting is an issues therefore checkout comments in the [docker-compose.prometh
 
 ```sh
 docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build 
+# Because the build times for individual services (especially for Rust) are relatively lengthy, you may also opt to build and execute specific services.
+docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build <service 1> <service 2> <service N>
+# e.g. 
+docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build python-hello-world-service grafana prometheus
+
 docker ps # Resolve container id of prometheus container
 docker exec -it <prometheus container id> sh
 # Manually update the scrape_config according to the [prometheus.yml](./prometheus/prometheus.yml) with `vi` cli tool in /etc/prometheus/prometheus.yml
@@ -53,17 +62,21 @@ Access the Grafana UI by visiting `localhost:3000` through a web browser. In thi
 
 #### Results
 
-##### ASP .NET Core metrics endpoints
+##### ASP .NET Core metrics endpoints for Prometheus scraping
 
-![ASP .NET Core metrics endpoints](./images/csharp-metrics-endpoint.PNG)
+![ASP .NET Core metrics endpoints for Prometheus scraping](./images/csharp-metrics-endpoint.PNG)
 
-##### Go Gin metrics endpoints
+##### Go Gin metrics endpoints for Prometheus scraping
 
-![ASP .NET Core metrics endpoints](./images/go-metrics-endpoint.PNG)
+![ASP .NET Core metrics endpoints for Prometheus scraping](./images/go-metrics-endpoint.PNG)
 
-##### Python FastAPI metrics endpoints
+##### Python FastAPI metrics endpoints for Prometheus scraping
 
-![Python FastAPI metrics endpoints](./images/python-metrics-endpoint.PNG)
+![Python FastAPI metrics endpoints for Prometheus scraping](./images/python-metrics-endpoint.PNG)
+
+##### Rust Actix Web metrics endpoints for Prometheus scraping
+
+![Rust Actix Web metrics endpoints for Prometheus scraping](./images/rust-metrics-endpoint.PNG)
 
 ##### Prometheus metric for total requests received
 
