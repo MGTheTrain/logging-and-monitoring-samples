@@ -135,7 +135,7 @@ curl -v -H "Content-Type: application/json" -XPOST -s "http://localhost:3100/lok
 curl -X GET http://localhost:3100/loki/api/v1/label/foo/values
 ```
 
-You can also refer to the [sample_loki_script.py](backend-services\loki-grafana-stack\sample-scripts\sample_loki_script.py) which can be executed once a Loki docker instance is runnning. E.g.
+You can also refer to the [sample_loki_script.py](backend-services/loki-grafana-stack/python/script/sample_loki_script.py) which can be executed once a Loki docker instance is runnning. E.g.
 
 ```sh
 # Install pip dependencies
