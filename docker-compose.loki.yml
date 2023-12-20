@@ -1,6 +1,18 @@
 version: "3.4"
 
 services:
+  python-hello-world-service:
+    container_name: python-hello-world-service
+    build:
+      context: .
+      dockerfile: backend-services/loki-grafana-stack/python/hello-world-service/Dockerfile
+    depends_on:
+      - "loki"
+      - "grafana"
+    ports:
+      - "5003:80/tcp"
+    restart: on-failure
+
   loki:
     image: grafana/loki:2.9.0
     ports:
