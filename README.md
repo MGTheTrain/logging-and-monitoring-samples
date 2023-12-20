@@ -28,7 +28,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 
 ### Prometheus/Grafana stack
 
-#### On Unix systems (Linux Ubuntu, Linux debian or MacOS versions)
+#### Building and running docker-compose network on Unix systems (Linux Ubuntu, Linux debian or MacOS versions)
 
 Build and run the docker-compose network:
 
@@ -43,7 +43,7 @@ docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build pyth
 Access the Prometheus UI by navigating to `localhost:9090` using a web browser. Here, you can explore discovered services with a metrics endpoint.
 Access the Grafana UI by visiting `localhost:3000` through a web browser. In this interface, you can create new dashboards.
 
-#### On Windows systems with Virtual Box enabled Docker
+#### Building and running docker-compose network on Windows systems with Virtual Box enabled Docker
 
 Mounting is an issues therefore checkout comments in the [docker-compose.prometheus-grafana-stack.yml](./docker-compose.prometheus-grafana-stack.yml). Therefore comment out lines in regards to volumes.
 
@@ -94,11 +94,25 @@ Access the Grafana UI by visiting `localhost:3000` through a web browser. In thi
 
 ### Loki/Grafana stack
 
+#### Building and running docker-compose network
+
 Build and run the docker-compose network:
 
 ```sh
 docker-compose -f docker-compose.loki.yml up -d --build # or `docker compose up -d --build`
 ```
+
+#### Testing Loki endpoints
+
+To check Loki endpoints, proceed with the following execution:
+
+```sh
+# To verify Loki endpoints when using the Docker ecosystem within Virtual Box on a Windows OS, substitute `192.168.99.100` with `localhost` in cases where a Docker Engine is present on Windows OS or when working with Unix systems like MacOS or Linux distributions.
+curl -G -v "http://192.168.99.100:3100/loki/api/v1/label" # Fetch Labels 
+curl -G -v "http://192.168.99.100:3100/loki/api/v1/query_range" --data-urlencode 'query={app="hello-world-service"}' 
+curl -G -v "http://192.168.99.100:3100/loki/api/v1/label/app/values"  
+```
+
 
 ### Cleanup
 
