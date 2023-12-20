@@ -148,11 +148,11 @@ python.exe .\sample_loki_script.py --loki-url localhost:3100
 
 #### Grafana sample dashboard considering Prometheus
 
-![Grafana sample dashboard](./images/grafana-sample-dashboard-considering-prometheus-datasource)
+![Grafana sample dashboard](./images/grafana-sample-dashboard-considering-prometheus-datasource.PNG)
 
 #### Grafana sample dashboard considering Loki
 
-![Grafana sample dashboard considering Loki](./images/grafana-sample-dashboard-considering-loki-datasource)
+![Grafana sample dashboard considering Loki](./images/grafana-sample-dashboard-considering-loki-datasource.PNG)
 
 
 ### Cleanup
