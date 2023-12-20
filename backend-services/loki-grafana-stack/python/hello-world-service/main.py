@@ -15,7 +15,13 @@ if 'loki_url' in config:
     loki_url = config['loki_url']
 else:
     loki_url = "http://192.168.99.100:3100/loki/api/v1/push"
-    # It's preferable to verify the existence of an environment variable and utilize it rather than relying on a fixed, hardcoded value.
+    # It's preferable to verify the existence of an environment variable and utilize it rather than relying on a fixed, hardcoded value. E.g.
+    # import os
+    # loki_url = os.getenv('LOKI_URL')
+    # if loki_url:
+    #     print(f"LOKI_URL is set to: {loki_url}")
+    # else:
+    #     print("LOKI_URL is not set")
 
 # Create a logger
 logger = logging.getLogger('python-hello-world-service-logger')
