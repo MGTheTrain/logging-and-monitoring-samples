@@ -103,13 +103,13 @@ To check Loki endpoints, run following curl commands:
 
 ```sh
 # On Windows OS with Virtual Box enabled Docker
-curl.exe -X GET http://192.168.99.100:3100/ready
+curl.exe -X GET http://192.168.99.100:3100/ready # You must ensure that the status changes from "Ingester not ready: waiting for 15s after being ready" to "ready". Else the communication to the Loki server will fail
 curl.exe -X GET http://192.168.99.100:3100/loki/api/v1/labels
 curl.exe -v -H "Content-Type: application/json" -XPOST -s "http://192.168.99.100:3100/loki/api/v1/push" --data-raw '{"streams": [{"stream": { "foo": "bar2" }, "values": [ [ "1570818238000000000", "fizzbuzz" ] ] }]}'
 curl.exe -X GET http://192.168.99.100:3100/loki/api/v1/label/foo/values
 
 # On Unix systems
-curl -X GET http://localhost:3100/ready
+curl -X GET http://localhost:3100/ready # You must ensure that the status changes from "Ingester not ready: waiting for 15s after being ready" to "ready". Else the communication to the Loki server will fail
 curl -X GET http://localhost:3100/loki/api/v1/labels
 curl -v -H "Content-Type: application/json" -XPOST -s "http://localhost:3100/loki/api/v1/push" --data-raw '{"streams": [{ "stream": { "foo": "bar2" }, "values": [ [ "1570818238000000000", "fizzbuzz" ] ] }]}'
 curl -X GET http://localhost:3100/loki/api/v1/label/foo/values
