@@ -39,6 +39,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 - [Send log data to Loki considering third-party clients for C#, Go, Python and more](https://grafana.com/docs/loki/latest/send-data/)
 - [NLog.Targets.Loki NuGet package](https://www.nuget.org/packages/NLog.Targets.Loki)
 - [Grafana Loki HTTP API](https://grafana.com/docs/loki/latest/reference/api/)
+- [loki-logger Rust crate](https://crates.io/crates/loki-logger)
 
 ## How to use
 
