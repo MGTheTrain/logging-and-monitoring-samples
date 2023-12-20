@@ -16,6 +16,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 - [Prometheus FastAPI Instrumentator](https://pypi.org/project/prometheus-fastapi-instrumentator/)
 - [Github repository for actix-web-prom](https://github.com/nlopes/actix-web-prom)
 - [Github repository for loki](https://github.com/grafana/loki)
+- [Official rust docker images with build and serve stages](https://hub.docker.com/_/rust/)
 
 ## How to use
 
