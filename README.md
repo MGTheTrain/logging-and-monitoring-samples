@@ -107,10 +107,15 @@ docker-compose -f docker-compose.loki.yml up -d --build # or `docker compose up 
 To check Loki endpoints, proceed with the following execution:
 
 ```sh
-# To verify Loki endpoints when using the Docker ecosystem within Virtual Box on a Windows OS, substitute `192.168.99.100` with `localhost` in cases where a Docker Engine is present on Windows OS or when working with Unix systems like MacOS or Linux distributions.
-curl -G -v "http://192.168.99.100:3100/loki/api/v1/label" # Fetch Labels 
-curl -G -v "http://192.168.99.100:3100/loki/api/v1/query_range" --data-urlencode 'query={app="hello-world-service"}' # Fetch Log Lines
-curl -G -v "http://192.168.99.100:3100/loki/api/v1/label/app/values"  # Fetch Log Streams
+# In PowerShell on Windows OS
+curl.exe -G -v "http://192.168.99.100:3100/loki/api/v1/label" # Fetch Labels 
+curl.exe -G -v "http://192.168.99.100:3100/loki/api/v1/query_range" --data-urlencode 'query={app="hello-world-service"}' # Fetch Log Lines
+curl.exe -G -v "http://192.168.99.100:3100/loki/api/v1/label/app/values"  # Fetch Log Streams
+
+# In MacOS or Linux distro terminals
+curl -G -v "http://localhost:3100/loki/api/v1/label" # Fetch Labels 
+curl -G -v "http://localhost:3100/loki/api/v1/query_range" --data-urlencode 'query={app="hello-world-service"}' # Fetch Log Lines
+curl -G -v "http://localhost:3100/loki/api/v1/label/app/values"  # Fetch Log Streams
 ```
 
 
