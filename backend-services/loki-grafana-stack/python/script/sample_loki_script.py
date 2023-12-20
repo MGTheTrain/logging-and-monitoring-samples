@@ -1,3 +1,4 @@
+# Reference: https://github.com/sleleko/devops-kb/blob/master/python/push-to-loki.py
 import requests
 import json
 import datetime
