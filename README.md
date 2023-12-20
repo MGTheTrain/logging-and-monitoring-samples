@@ -35,6 +35,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 - [Github repository for loki](https://github.com/grafana/loki)
 - [Official rust docker images with build and serve stages](https://hub.docker.com/_/rust/)
 - [Install Loki with Docker or Docker Compose](https://grafana.com/docs/loki/latest/setup/install/docker/)
+- [Grafana Loki HTTP API](https://grafana.com/docs/loki/latest/reference/api/)
 
 ## How to use
 
@@ -119,15 +120,17 @@ docker-compose -f docker-compose.loki.yml up -d --build # or `docker compose up 
 To check Loki endpoints, proceed with the following execution:
 
 ```sh
-# In PowerShell on Windows OS
-curl.exe -G -v "http://192.168.99.100:3100/loki/api/v1/label" # Fetch Labels 
-curl.exe -G -v "http://192.168.99.100:3100/loki/api/v1/query_range" --data-urlencode 'query={app="hello-world-service"}' # Fetch Log Lines
-curl.exe -G -v "http://192.168.99.100:3100/loki/api/v1/label/app/values"  # Fetch Log Streams
+# On Windows OS with Virtual Box enabled Docker
+curl.exe -X GET http://192.168.99.100:3100/ready
+curl.exe -X GET http://192.168.99.100:3100/loki/api/v1/labels
+curl.exe -v -H "Content-Type: application/json" -XPOST -s "http://192.168.99.100:3100/loki/api/v1/push" --data-raw '{"streams": [{"stream": { "foo": "bar2" }, "values": [ [ "1570818238000000000", "fizzbuzz" ] ] }]}'
+curl.exe -X GET http://192.168.99.100:3100/loki/api/v1/label/foo/values
 
-# In MacOS or Linux distro terminals
-curl -G -v "http://localhost:3100/loki/api/v1/label" # Fetch Labels 
-curl -G -v "http://localhost:3100/loki/api/v1/query_range" --data-urlencode 'query={app="hello-world-service"}' # Fetch Log Lines
-curl -G -v "http://localhost:3100/loki/api/v1/label/app/values"  # Fetch Log Streams
+# On Unix systems
+curl -X GET http://localhost:3100/ready
+curl -X GET http://localhost:3100/loki/api/v1/labels
+curl -v -H "Content-Type: application/json" -XPOST -s "http://localhost:3100/loki/api/v1/push" --data-raw '{"streams": [{ "stream": { "foo": "bar2" }, "values": [ [ "1570818238000000000", "fizzbuzz" ] ] }]}'
+curl.exe -X GET http://localhost:3100/loki/api/v1/label/foo/values
 ```
 
 
