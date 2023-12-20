@@ -138,6 +138,8 @@ curl -X GET http://localhost:3100/loki/api/v1/label/foo/values
 You can also refer to the [sample_loki_script.py](backend-services\loki-grafana-stack\sample-scripts\sample_loki_script.py) which can be executed once a Loki docker instance is runnning. E.g.
 
 ```sh
+# Install pip dependencies
+pip install -r requirements.txt
 # On Windows OS with Virtual Box enabled Docker
 python.exe .\sample_loki_script.py --loki-url 192.168.99.100:3100
 
