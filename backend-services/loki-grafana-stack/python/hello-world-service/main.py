@@ -1,23 +1,24 @@
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI
 import logging
-import logging_loki
-logging_loki.emitter.LokiEmitter.level_tag = "level"
+from log_handler import configure_logger
+import json
 
 app = FastAPI()
 
+# Load configuration from JSON file
+with open('./config/appsettings.json') as f:
+    config = json.load(f)
+
+# Check if the loki_url key exists in the config
+if 'loki_url' in config:
+    loki_url = config['loki_url']
+else:
+    loki_url = "http://192.168.99.100:3100/loki/api/v1/push"
+
 # Create a logger
 logger = logging.getLogger('python-hello-world-service-logger')
-logger.setLevel(logging.DEBUG)
-# Replace with your Loki server URL and port
-loki_url = 'http://192.168.99.100:3100/loki/api/v1/push'
-# Create a LokiHandler and set its URL
-loki_handler = logging_loki.LokiHandler(
-    url=loki_url,
-    tags={"application": "python-hello-world-service"},
-    version="1",
-)
-# Add the LokiHandler to the logger
-logger.addHandler(loki_handler)
+# Configure logger
+configure_logger(logger, loki_url)
 
 @app.get('/api/v1/hws', status_code=200)
 async def hello():
