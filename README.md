@@ -92,6 +92,8 @@ TBD
 
 ### Cleanup
 
+To delete the Docker resources that have been created, execute the following commands:
+
 ```sh
 sudo docker rm -f $(sudo docker ps -qa)
 sudo docker system prune --volumes --force
