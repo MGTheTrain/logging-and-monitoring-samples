@@ -2,9 +2,26 @@
 
 ## Table of Contents
 
+## Table of Contents
+
 - [Summary](#summary)
 - [References](#references)
 - [How to use](#how-to-use)
+  - [Prometheus/Grafana stack](#prometheusgrafana-stack)
+    - [Building and running docker-compose network on Unix systems (Linux Ubuntu, Linux Debian, or MacOS versions)](#building-and-running-docker-compose-network-on-unix-systems-linux-ubuntu-linux-debian-or-macos-versions)
+    - [Building and running docker-compose network on Windows systems with Virtual Box enabled Docker](#building-and-running-docker-compose-network-on-windows-systems-with-virtual-box-enabled-docker)
+    - [Results](#results)
+      - [ASP .NET Core metrics endpoints for Prometheus scraping](#asp-net-core-metrics-endpoints-for-prometheus-scraping)
+      - [Go Gin metrics endpoints for Prometheus scraping](#go-gin-metrics-endpoints-for-prometheus-scraping)
+      - [Python FastAPI metrics endpoints for Prometheus scraping](#python-fastapi-metrics-endpoints-for-prometheus-scraping)
+      - [Rust Actix Web metrics endpoints for Prometheus scraping](#rust-actix-web-metrics-endpoints-for-prometheus-scraping)
+      - [Prometheus metric for total requests received](#prometheus-metric-for-total-requests-received)
+      - [Grafana sample dashboard](#grafana-sample-dashboard)
+  - [Loki/Grafana stack](#lokigrafana-stack)
+    - [Building and running docker-compose network](#building-and-running-docker-compose-network)
+    - [Testing Loki endpoints](#testing-loki-endpoints)
+  - [Cleanup](#cleanup)
+
 
 ## Summary
 
