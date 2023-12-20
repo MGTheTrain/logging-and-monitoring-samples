@@ -35,6 +35,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 - [Github repository for loki](https://github.com/grafana/loki)
 - [Official rust docker images with build and serve stages](https://hub.docker.com/_/rust/)
 - [Install Loki with Docker or Docker Compose](https://grafana.com/docs/loki/latest/setup/install/docker/)
+- [NLog.Targets.Loki NuGet package](https://www.nuget.org/packages/NLog.Targets.Loki)
 - [Grafana Loki HTTP API](https://grafana.com/docs/loki/latest/reference/api/)
 
 ## How to use
