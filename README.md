@@ -89,3 +89,10 @@ Access the Grafana UI by visiting `localhost:3000` through a web browser. In thi
 ### Loki
 
 TBD
+
+### Cleanup
+
+```sh
+sudo docker rm -f $(sudo docker ps -qa)
+sudo docker system prune --volumes --force
+```
