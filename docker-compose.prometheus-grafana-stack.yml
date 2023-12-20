@@ -47,7 +47,7 @@ services:
       - "prometheus"
       - "grafana"
     ports:
-      - "5003:80/tcp"
+      - "5004:80/tcp"
     restart: on-failure
 
   # monitoring services
