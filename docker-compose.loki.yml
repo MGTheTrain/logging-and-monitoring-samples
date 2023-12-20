@@ -25,6 +25,8 @@ services:
       - "grafana"
     ports:
       - "5004:80/tcp"
+    environment:
+      LOKI_URL: http://loki/loki/api/v1/push
     restart: on-failure
 
   loki:
