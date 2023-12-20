@@ -39,9 +39,8 @@ async fn main() -> std::io::Result<()> {
             service(web::resource("/health").to(health)).
             service(hello)
     })
-    .bind(("127.0.0.1", 80))?
+    // .bind(("127.0.0.1", 80))? // For local debugging with VS Code uncomment this line
+    .bind(("0.0.0.0", 80))? // When building the docker image and running the container from it uncomment this line: listening on all available network interfaces or addresses on the machine
     .run()
     .await
 }
-
-// Configuring Log Level when running the executable, e.g. `RUST_LOG=debug cargo run`
