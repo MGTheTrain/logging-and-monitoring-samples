@@ -37,9 +37,9 @@ Example repository showcasing the utilization of logging and monitoring solution
 - [Official rust docker images with build and serve stages](https://hub.docker.com/_/rust/)
 - [Install Loki with Docker or Docker Compose](https://grafana.com/docs/loki/latest/setup/install/docker/)
 - [Send log data to Loki considering third-party clients for C#, Go, Python and more](https://grafana.com/docs/loki/latest/send-data/)
-- [NLog.Targets.Loki NuGet package](https://www.nuget.org/packages/NLog.Targets.Loki)
 - [Grafana Loki HTTP API](https://grafana.com/docs/loki/latest/reference/api/)
 - [loki-logger Rust crate](https://crates.io/crates/loki-logger)
+- [Serilog-Sinks-Loki Github repository](https://github.com/JosephWoodward/Serilog-Sinks-Loki)
 
 ## How to use
 
