@@ -1,6 +1,23 @@
 version: "3.4"
 
 services:
+  csharp-hello-world-service:
+    container_name: csharp-hello-world-service
+    build:
+      context: .
+      dockerfile: backend-services/loki-grafana-stack/c#/HelloWorldService/Dockerfile
+    depends_on:
+      - "loki"
+      - "grafana"
+    ports:
+      - "5001:80/tcp"
+    restart: on-failure
+    environment:
+      LokiConfigSettings__LokiUrl: http://loki:3100
+    networks:
+      - loki_network
+
+
   python-hello-world-service:
     container_name: python-hello-world-service
     build:
