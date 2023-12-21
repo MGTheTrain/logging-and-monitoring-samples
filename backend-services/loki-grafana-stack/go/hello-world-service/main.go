@@ -14,8 +14,6 @@ import (
 var loki promtail.Client // Change the variable declaration
 
 func initLokiClient(url string) {
-	// Replace with your Loki server URL
-	// url := "http://192.168.99.100:3100/api/prom/push"
 	sourceName := "hello-world-service"
 	jobName := "hello-world-service-job"
 
@@ -52,11 +50,12 @@ func loadConfiguration() string {
 
 	// Read in the config file
 	if err := viper.ReadInConfig(); err != nil {
-		panic(fmt.Errorf("Fatal error config file: %s", err))
+		fmt.Printf("Error reading config file: %s. Attempting to access environment variables", err)
 	}
 
 	// Retrieve the URL from the configuration
 	url := viper.GetString("loki.url")
+	// e.g. "http://192.168.99.100:3100/api/prom/push"
 	if url == "" {
 		url = viper.GetString("LOKI_URL")
 	}
