@@ -90,7 +90,7 @@ Access the Grafana UI by visiting `localhost:3000` through a web browser. In thi
 Build and run the docker-compose network:
 
 ```sh
-docker-compose -f docker-compose.loki.yml up -d --build # or `docker compose up -d --build`
+docker-compose -f docker-compose.loki-grafana-stack.yml up -d --build # or `docker compose up -d --build`
 # Because the build times for individual services (especially for Rust) are relatively lengthy, you may also opt to build and execute specific services.
 docker-compose -f docker-compose.loki-grafana-stack.yml up -d --build <service 1> <service 2> <service N>
 # e.g. 
