@@ -12,8 +12,10 @@ services:
     ports:
       - "5003:80/tcp"
     environment:
-      LOKI_URL: http://loki/loki/api/v1/push
+      LOKI_URL: http://loki:3100/loki/api/v1/push
     restart: on-failure
+    networks:
+      - loki_network
 
   rust-hello-world-service:
     container_name: rust-hello-world-service
@@ -26,8 +28,10 @@ services:
     ports:
       - "5004:80/tcp"
     environment:
-      LOKI_URL: http://loki/loki/api/v1/push
+      LOKI_URL: http://loki:3100/loki/api/v1/push
     restart: on-failure
+    networks:
+      - loki_network
 
   loki:
     image: grafana/loki:2.9.0
