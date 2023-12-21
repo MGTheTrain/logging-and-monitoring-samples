@@ -1,0 +1,2 @@
+loki:
+  url: "http://192.168.99.100:3100/api/prom/push"
