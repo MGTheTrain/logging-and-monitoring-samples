@@ -40,6 +40,7 @@ Example repository showcasing the utilization of logging and monitoring solution
 - [Grafana Loki HTTP API](https://grafana.com/docs/loki/latest/reference/api/)
 - [loki-logger Rust crate](https://crates.io/crates/loki-logger)
 - [Serilog-Sinks-Loki Github repository](https://github.com/JosephWoodward/Serilog-Sinks-Loki)
+- [Go promtail-client example](https://github.com/e-kostylov/promtail-client/blob/506f3f921e9c/examples/client-example/main.go)
 
 ## How to use
 
