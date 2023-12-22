@@ -148,10 +148,12 @@ docker-compose -f docker-compose.jaeger.yml up -d --build <service 1> <service 2
 docker-compose -f docker-compose.jaeger.yml up -d --build python-hello-world-service jaeger
 ```
 
-**NOTE:** Backend services for Go Gin, Rust Actix Web, and C# ASP .NET Core are not included in this example. Refer to the following links for guidance and instructions on getting started:
+**NOTE:** The Python sample backend service makes use of the `jaeger_client` pip package. However, it's advisable to explore the [OpenTelemetry Jaeger Exporter](https://opentelemetry-python-yusuket.readthedocs.io/en/latest/ext/jaeger/jaeger.html) as preferred approach. Backend services for Go Gin, Rust Actix Web, and C# ASP .NET Core are not included in this example. Refer to the following links for guidance and instructions on getting started:
 - [OpenTelemetry-Go Jaeger Exporter](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/jaeger#section-readme)
 - [opentelemetry-rust Github repo](https://github.com/open-telemetry/opentelemetry-rust)
 - [OpenTelemtry dotnet - Getting Started with Jaeger](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/docs/trace/getting-started-jaeger/README.md)
+
+
 
 ### Results
 
