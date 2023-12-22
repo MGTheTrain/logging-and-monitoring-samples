@@ -23,6 +23,7 @@
     - [Prometheus metric for total requests received](#prometheus-metric-for-total-requests-received)
     - [Grafana sample dashboard considering Prometheus](#grafana-sample-dashboard-considering-prometheus)
     - [Grafana sample dashboard considering Loki](#grafana-sample-dashboard-considering-loki)
+    - [Jaeger sample trace](#jaeger-sample-trace)
   - [Cleanup](#cleanup)
 
 
@@ -146,6 +147,11 @@ docker-compose -f docker-compose.jaeger.yml up -d --build <service 1> <service 2
 # e.g. 
 docker-compose -f docker-compose.jaeger.yml up -d --build python-hello-world-service jaeger
 ```
+
+**NOTE:** Backend services for Go Gin, Rust Actix Web, and C# ASP .NET Core are not included in this example. Refer to the following links for guidance and instructions on getting started:
+- [OpenTelemetry-Go Jaeger Exporter](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/jaeger#section-readme)
+- [opentelemetry-rust Github repo](https://github.com/open-telemetry/opentelemetry-rust)
+- [OpenTelemtry dotnet - Getting Started with Jaeger](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/docs/trace/getting-started-jaeger/README.md)
 
 ### Results
 
