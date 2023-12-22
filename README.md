@@ -1,4 +1,4 @@
-# logging-and-monitoring-samples
+# logging-monitoring-and-tracing-samples
 
 ## Table of Contents
 
@@ -26,7 +26,7 @@
 
 ## Summary
 
-Example repository showcasing the utilization of logging and monitoring solutions, interfacing with them through backend services.
+Example repository showcasing the utilization of logging, monitoring and tracing solutions, interfacing with them through backend services.
 
 ## References
 
