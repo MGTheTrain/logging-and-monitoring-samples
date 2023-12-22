@@ -1,6 +1,7 @@
 version: '3'
 services:
   jaeger:
+    container_name: jaeger
     image: jaegertracing/all-in-one:latest
     ports:
       - "16686:16686"
@@ -8,3 +9,24 @@ services:
       - "5778:5778"
     environment:
       - COLLECTOR_ZIPKIN_HTTP_PORT=9411
+    networks:
+      - jaeger_network
+
+  python-hello-world-service:
+    container_name: python-hello-world-service
+    build:
+      context: .
+      dockerfile: backend-services/jaeger/python/hello-world-service/Dockerfile
+    depends_on:
+      - "jaeger"
+    ports:
+      - "5003:80/tcp"
+    environment:
+      JAEGER_HOST: jaeger 
+      JAEGER_PORT: 6831
+    restart: on-failure
+    networks:
+      - jaeger_network
+
+networks:
+  jaeger_network:
