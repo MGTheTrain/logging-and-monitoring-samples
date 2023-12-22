@@ -177,6 +177,10 @@ docker-compose -f docker-compose.jaeger.yml up -d --build python-hello-world-ser
 
 ![Grafana sample dashboard considering Loki](./images/grafana-sample-dashboard-considering-loki-datasource.PNG)
 
+#### Jaeger sample trace
+
+![Jaeger sample trace](./images/jaeger-sample-trace.PNG)
+
 
 ### Cleanup
 
