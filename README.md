@@ -13,6 +13,8 @@
   - [Loki/Grafana stack](#lokigrafana-stack)
     - [Building and running docker-compose network](#building-and-running-docker-compose-network)
     - [Testing Loki endpoints](#testing-loki-endpoints)
+  - [Jaeger](#jaeger)
+    - [Building and running docker-compose network with Jaeger](#building-and-running-docker-compose-network-with-jaeger)
   - [Results](#results)
     - [ASP .NET Core metrics endpoints for Prometheus scraping](#asp-net-core-metrics-endpoints-for-prometheus-scraping)
     - [Go Gin metrics endpoints for Prometheus scraping](#go-gin-metrics-endpoints-for-prometheus-scraping)
@@ -41,6 +43,7 @@ Example repository showcasing the utilization of logging, monitoring and tracing
 - [loki-logger Rust crate](https://crates.io/crates/loki-logger)
 - [Serilog-Sinks-Loki Github repository](https://github.com/JosephWoodward/Serilog-Sinks-Loki)
 - [Go promtail-client example](https://github.com/e-kostylov/promtail-client/blob/506f3f921e9c/examples/client-example/main.go)
+- [Get up and running with Jaeger in your local environment](https://www.jaegertracing.io/docs/1.6/getting-started/)
 
 ## How to use
 
@@ -128,6 +131,20 @@ python.exe .\sample_loki_script.py --loki-url 192.168.99.100:3100
 python.exe .\sample_loki_script.py --loki-url localhost:3100
 
 # You can expect to receive a status code of 204. Access the Grafana service running within the Docker Compose cluster by navigating to 192.168.99.100:3000 using a web browser. From there, you'll be able to create a dashboard, utilizing the Loki datasource.
+```
+
+### Jaeger
+
+#### Building and running docker-compose network with Jaeger
+
+Build and run the docker-compose network:
+
+```sh
+docker-compose -f docker-compose.jaeger.yml up -d --build # or `docker compose up -d --build`
+# Because the build times for individual services (especially for Rust) are relatively lengthy, you may also opt to build and execute specific services.
+docker-compose -f docker-compose.jaeger.yml up -d --build <service 1> <service 2> <service N>
+# e.g. 
+docker-compose -f docker-compose.jaeger.yml up -d --build python-hello-world-service jaeger
 ```
 
 ### Results
