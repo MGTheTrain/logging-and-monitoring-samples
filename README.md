@@ -2,8 +2,6 @@
 
 ## Table of Contents
 
-## Table of Contents
-
 - [Summary](#summary)
 - [References](#references)
 - [How to use](#how-to-use)
