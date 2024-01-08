@@ -27,7 +27,7 @@
 
 ## Summary
 
-Example repository showcasing the utilization of logging, monitoring and tracing solutions, interfacing with them through backend services.
+Example repository showcasing the utilization of logging, monitoring and tracing solutions, communicating with them through backend services.
 
 ## References
 
