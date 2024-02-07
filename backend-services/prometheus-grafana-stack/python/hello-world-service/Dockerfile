@@ -14,5 +14,5 @@ RUN /bin/sh -c "pip install --upgrade pip && \
 ENTRYPOINT [ "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80" ]
 EXPOSE 80
 
-# building the docker image on Unix systems from `cd ../../../../`: sudo docker build -t python-hello-world-service:0.1.0 -f ./backend-services/prometheus-grafana-stack/python/hello-world-service/Dockerfile .
-# run the docker container on Unix systems: sudo docker run --rm -p 5003:80 -d python-hello-world-service:0.1.0 
+# Building the docker image from `cd ../../../../`: sudo docker build -t python-hello-world-service:0.1.0 -f ./backend-services/prometheus-grafana-stack/python/hello-world-service/Dockerfile .
+# Run the docker container: sudo docker run --rm -p 5003:80 -d python-hello-world-service:0.1.0 

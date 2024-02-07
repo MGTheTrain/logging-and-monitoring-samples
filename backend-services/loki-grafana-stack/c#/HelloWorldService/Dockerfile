@@ -11,5 +11,5 @@ EXPOSE 80
 EXPOSE 9102
 ENTRYPOINT ["dotnet", "HelloWorldService.dll"]
 
-# building the docker image on Unix systems from `cd ../../../../`: sudo docker build -t csharp-hello-world-service-considering-loki:0.1.0 -f ./backend-services/loki-grafana-stack/c#/HelloWorldService/Dockerfile .
-# run the docker container on Unix systems: sudo docker run --rm -p 5001:80 -d csharp-hello-world-service-considering-loki:0.1.0 
+# Building the docker image from `cd ../../../../`: sudo docker build -t csharp-hello-world-service-considering-loki:0.1.0 -f ./backend-services/loki-grafana-stack/c#/HelloWorldService/Dockerfile .
+# Run the docker container: sudo docker run --rm -p 5001:80 -d csharp-hello-world-service-considering-loki:0.1.0 
