@@ -22,5 +22,5 @@ RUN chmod +x hello-world-service
 ENV RUST_LOG=debug
 CMD ["./hello-world-service"]
 
-# Building the docker image from `cd ../../../../`: sudo docker build -t rust-hello-world-service-considering-loki:0.1.0 -f ./backend-services/loki-grafana-stack/rust/hello-world-service/Dockerfile .
-# Run the docker container: sudo docker run --rm -p 5004:80 -d rust-hello-world-service-considering-loki:0.1.0 
+# Building the docker image from `cd ../../../../`: docker build -t rust-hello-world-service-considering-loki:0.1.0 -f ./backend-services/loki-grafana-stack/rust/hello-world-service/Dockerfile .
+# Run the docker container: docker run --rm -p 5004:80 -d rust-hello-world-service-considering-loki:0.1.0 
