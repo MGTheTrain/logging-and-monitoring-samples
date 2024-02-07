@@ -41,7 +41,7 @@ namespace HelloWorldService.Web.Controllers
         /// <return>Returns awaitable task</return>
         [HttpGet]
         [Produces("application/json")]
-        public IActionResult GetUploadBlobsMetainformation()
+        public IActionResult Hello()
         {
             var jsonMessage = "{\"message\": \"Hello from C# ASP .NET Core\"}";
 

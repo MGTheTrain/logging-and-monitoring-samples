@@ -14,7 +14,7 @@ public class HelloWorldController : ControllerBase
     /// <return>Returns awaitable task</return>
     [HttpGet]
     [Produces("application/json")]
-    public async Task<IActionResult> GetUploadBlobsMetainformation()
+    public async Task<IActionResult> Hello()
     {
         var jsonMessage = "{\"message\": \"Hello from C# ASP .NET Core\"}";
         return await Task.FromResult(StatusCode(200, jsonMessage));
