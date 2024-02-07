@@ -5,24 +5,6 @@
 - [Summary](#summary)
 - [References](#references)
 - [How to use](#how-to-use)
-  - [Prometheus/Grafana stack](#prometheusgrafana-stack)
-    - [Building and running docker-compose network on Unix systems (Linux Ubuntu, Linux Debian, or MacOS versions)](#building-and-running-docker-compose-network-on-unix-systems-linux-ubuntu-linux-debian-or-macos-versions)
-    - [Building and running docker-compose network on Windows systems with Virtual Box enabled Docker](#building-and-running-docker-compose-network-on-windows-systems-with-virtual-box-enabled-docker)
-  - [Loki/Grafana stack](#lokigrafana-stack)
-    - [Building and running docker-compose network](#building-and-running-docker-compose-network)
-    - [Testing Loki endpoints](#testing-loki-endpoints)
-  - [Jaeger](#jaeger)
-    - [Building and running docker-compose network with Jaeger](#building-and-running-docker-compose-network-with-jaeger)
-  - [Results](#results)
-    - [ASP .NET Core metrics endpoints for Prometheus scraping](#asp-net-core-metrics-endpoints-for-prometheus-scraping)
-    - [Go Gin metrics endpoints for Prometheus scraping](#go-gin-metrics-endpoints-for-prometheus-scraping)
-    - [Python FastAPI metrics endpoints for Prometheus scraping](#python-fastapi-metrics-endpoints-for-prometheus-scraping)
-    - [Rust Actix Web metrics endpoints for Prometheus scraping](#rust-actix-web-metrics-endpoints-for-prometheus-scraping)
-    - [Prometheus metric for total requests received](#prometheus-metric-for-total-requests-received)
-    - [Grafana sample dashboard considering Prometheus](#grafana-sample-dashboard-considering-prometheus)
-    - [Grafana sample dashboard considering Loki](#grafana-sample-dashboard-considering-loki)
-    - [Jaeger sample trace](#jaeger-sample-trace)
-  - [Cleanup](#cleanup)
 
 
 ## Summary
@@ -46,45 +28,27 @@ Example repository showcasing the utilization of logging, monitoring and tracing
 
 ## How to use
 
+### Prerequisite
+
+- Install the [Docker Engine](https://docs.docker.com/engine/install/)
+
 ### Prometheus/Grafana stack
 
-#### Building and running docker-compose network on Unix systems (Linux Ubuntu, Linux debian or MacOS versions)
+#### Building and running docker-compose network 
 
 Build and run the docker-compose network:
 
 ```sh
-docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build # or `docker compose up -d --build`
+docker compose -f docker-compose.prometheus-grafana-stack.yml up -d --build # or `docker compose up -d --build`
 # Because the build times for individual services (especially for Rust) are relatively lengthy, you may also opt to build and execute specific services.
-docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build <service 1> <service 2> <service N>
+docker compose -f docker-compose.prometheus-grafana-stack.yml up -d --build <service 1> <service 2> <service N>
 # e.g. 
-docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build python-hello-world-service grafana prometheus
+docker compose -f docker-compose.prometheus-grafana-stack.yml up -d --build python-hello-world-service grafana prometheus
 ```
 
 Access the Prometheus UI by navigating to `localhost:9090` using a web browser. Here, you can explore discovered services with a metrics endpoint.
 Access the Grafana UI by visiting `localhost:3000` through a web browser. In this interface, you can create new dashboards.
 
-#### Building and running docker-compose network on Windows systems with Virtual Box enabled Docker
-
-Mounting is an issues therefore checkout comments in the [docker-compose.prometheus-grafana-stack.yml](./docker-compose.prometheus-grafana-stack.yml). Therefore comment out lines in regards to volumes.
-
-```sh
-docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build 
-# Because the build times for individual services (especially for Rust) are relatively lengthy, you may also opt to build and execute specific services.
-docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build <service 1> <service 2> <service N>
-# e.g. 
-docker-compose -f docker-compose.prometheus-grafana-stack.yml up -d --build python-hello-world-service grafana prometheus
-
-docker ps # Resolve container id of prometheus container
-docker exec -it <prometheus container id> sh
-# Manually update the scrape_config according to the [prometheus.yml](./prometheus/prometheus.yml) with `vi` cli tool in /etc/prometheus/prometheus.yml
-# Exit out of the container terminal. 
-docker restart restart <prometheus container id>
-```
-
-After restarting Prometheus should be able to discover the metrics endpoints. 
-
-Access the Prometheus UI by navigating to `localhost:9090` using a web browser. Here, you can explore discovered services with a metrics endpoint.
-Access the Grafana UI by visiting `localhost:3000` through a web browser. In this interface, you can create new dashboards.
 
 ### Loki/Grafana stack
 
@@ -93,11 +57,11 @@ Access the Grafana UI by visiting `localhost:3000` through a web browser. In thi
 Build and run the docker-compose network:
 
 ```sh
-docker-compose -f docker-compose.loki-grafana-stack.yml up -d --build # or `docker compose up -d --build`
+docker compose -f docker-compose.loki-grafana-stack.yml up -d --build # or `docker compose up -d --build`
 # Because the build times for individual services (especially for Rust) are relatively lengthy, you may also opt to build and execute specific services.
-docker-compose -f docker-compose.loki-grafana-stack.yml up -d --build <service 1> <service 2> <service N>
+docker compose -f docker-compose.loki-grafana-stack.yml up -d --build <service 1> <service 2> <service N>
 # e.g. 
-docker-compose -f docker-compose.loki-grafana-stack.yml up -d --build python-hello-world-service grafana loki
+docker compose -f docker-compose.loki-grafana-stack.yml up -d --build python-hello-world-service grafana loki
 ```
 
 #### Testing Loki endpoints
@@ -105,13 +69,6 @@ docker-compose -f docker-compose.loki-grafana-stack.yml up -d --build python-hel
 To check Loki endpoints, run following curl commands:
 
 ```sh
-# On Windows OS with Virtual Box enabled Docker
-curl.exe -X GET http://192.168.99.100:3100/ready # You must ensure that the status changes from "Ingester not ready: waiting for 15s after being ready" to "ready". Else the communication to the Loki server will fail
-curl.exe -X GET http://192.168.99.100:3100/loki/api/v1/labels
-curl.exe -v -H "Content-Type: application/json" -XPOST -s "http://192.168.99.100:3100/loki/api/v1/push" --data-raw '{"streams": [{"stream": { "foo": "bar2" }, "values": [ [ "1570818238000000000", "fizzbuzz" ] ] }]}'
-curl.exe -X GET http://192.168.99.100:3100/loki/api/v1/label/foo/values
-
-# On Unix systems
 curl -X GET http://localhost:3100/ready # You must ensure that the status changes from "Ingester not ready: waiting for 15s after being ready" to "ready". Else the communication to the Loki server will fail
 curl -X GET http://localhost:3100/loki/api/v1/labels
 curl -v -H "Content-Type: application/json" -XPOST -s "http://localhost:3100/loki/api/v1/push" --data-raw '{"streams": [{ "stream": { "foo": "bar2" }, "values": [ [ "1570818238000000000", "fizzbuzz" ] ] }]}'
@@ -123,11 +80,8 @@ You can also refer to the [sample_loki_script.py](backend-services/loki-grafana-
 ```sh
 # Install pip dependencies
 pip install -r requirements.txt
-# On Windows OS with Virtual Box enabled Docker
-python.exe .\sample_loki_script.py --loki-url 192.168.99.100:3100
 
-# On Unix systems
-python.exe .\sample_loki_script.py --loki-url localhost:3100
+python ./sample_loki_script.py --loki-url localhost:3100
 
 # You can expect to receive a status code of 204. Access the Grafana service running within the Docker Compose cluster by navigating to 192.168.99.100:3000 using a web browser. From there, you'll be able to create a dashboard, utilizing the Loki datasource.
 ```
@@ -139,11 +93,11 @@ python.exe .\sample_loki_script.py --loki-url localhost:3100
 Build and run the docker-compose network:
 
 ```sh
-docker-compose -f docker-compose.jaeger.yml up -d --build # or `docker compose up -d --build`
+docker compose -f docker-compose.jaeger.yml up -d --build # or `docker compose up -d --build`
 # Because the build times for individual services (especially for Rust) are relatively lengthy, you may also opt to build and execute specific services.
-docker-compose -f docker-compose.jaeger.yml up -d --build <service 1> <service 2> <service N>
+docker compose -f docker-compose.jaeger.yml up -d --build <service 1> <service 2> <service N>
 # e.g. 
-docker-compose -f docker-compose.jaeger.yml up -d --build python-hello-world-service jaeger
+docker compose -f docker-compose.jaeger.yml up -d --build python-hello-world-service jaeger
 ```
 
 **NOTE:** The Python sample backend service makes use of the `jaeger_client` pip package. However, it's advisable to explore the [OpenTelemetry Jaeger Exporter](https://opentelemetry-python-yusuket.readthedocs.io/en/latest/ext/jaeger/jaeger.html) as preferred approach. Backend services for Go Gin, Rust Actix Web, and C# ASP .NET Core are not included in this example. Refer to the following links for guidance and instructions on getting started:
@@ -190,7 +144,7 @@ docker-compose -f docker-compose.jaeger.yml up -d --build python-hello-world-ser
 
 ### Cleanup
 
-To delete the Docker resources that have been created, execute the following commands:
+To delete Docker resources that have been created, execute the following commands:
 
 ```sh
 sudo docker rm -f $(sudo docker ps -qa)
