@@ -1,4 +1,4 @@
-# logging-monitoring-and-tracing-samples
+# logging-monitoring-and-tracing-poc
 
 ## Table of Contents
 
